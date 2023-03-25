@@ -47,6 +47,8 @@ class QuizActivity : AppCompatActivity(),View.OnClickListener {
         tvOptionTwo?.setOnClickListener(this)
         tvOptionThree?.setOnClickListener(this)
         tvOptionFour?.setOnClickListener(this)
+
+        btnSubmit = findViewById(R.id.btn_submit)
         btnSubmit?.setOnClickListener(this)
 
         mQuestionList = constants.getQuestions()
@@ -183,6 +185,7 @@ class QuizActivity : AppCompatActivity(),View.OnClickListener {
                     drawableView
                 )
             }
+
         }
     }
 }
