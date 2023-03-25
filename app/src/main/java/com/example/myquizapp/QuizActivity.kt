@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 
 
@@ -59,6 +60,8 @@ class QuizActivity : AppCompatActivity(),View.OnClickListener {
     }
 
     private fun setQuestion() {
+
+        defaultOptionsView()
 
 
         val question: Question = mQuestionList!![mCurrentPositoin - 1]
@@ -148,6 +151,9 @@ class QuizActivity : AppCompatActivity(),View.OnClickListener {
                         mCurrentPositoin <= mQuestionList!!.size ->{
                             setQuestion()
                         }
+                        else ->{
+                            Toast.makeText(this,"YOU MADE IT",Toast.LENGTH_SHORT).show()
+                        }
                     }
                     }else{
                     val question = mQuestionList?.get(mCurrentPositoin-1)
@@ -155,6 +161,14 @@ class QuizActivity : AppCompatActivity(),View.OnClickListener {
                         answerView(mSelectionOptionPosition,R.drawable.wrong_option_border_bg)
                     }
                     answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
+
+                    if(mCurrentPositoin == mQuestionList!!.size){
+                        btnSubmit?.text = "FINISH"
+                    }else{
+                        btnSubmit?.text = "GO TO NEXT QUESTION"
+                    }
+
+                    mSelectionOptionPosition = 0
                 }
             }
         }
